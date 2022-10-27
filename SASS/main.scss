@@ -152,9 +152,7 @@ h2 {
             @include v.breakpoint(large-screen) {
                 display: flex;
                 flex-direction: column;
-                text-align: left;
-                align-items: stretch;
-                justify-content: center;
+                justify-content: space-around;
                 margin: 2rem;
             }
         }
@@ -167,7 +165,7 @@ h2 {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             margin: 11rem 26rem;
-            max-width: 700px;
+            max-width: 608px;
         }
     }
 }
