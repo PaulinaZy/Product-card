@@ -1,0 +1,175 @@
+@use "variables"as v;
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    width: 100%;
+    display: block;
+}
+
+.btn {
+    display: block;
+    background-color: v.$dark-green;
+    border-radius: 0.5rem;
+    padding: 1rem 0;
+    text-align: center;
+    color: v.$white;
+    text-decoration: none;
+
+    font: {
+        size: 0.8rem;
+        family: v.$p-font;
+        weight: 700;
+    }
+
+    &:hover {
+        background-color: v.$hover;
+    }
+}
+
+h2 {
+
+    font: {
+        size: v.$h2-size;
+        family: v.$h2-font;
+        weight: 700;
+    }
+
+    line-height: 2rem;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: v.$bg-color;
+
+    .product-card {
+        margin: 1.75rem 1rem;
+        background-color: v.$white;
+        border-radius: 10px;
+
+        .img-container {
+            background-image: url("../images/image-product-mobile.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            border-radius: 10px 10px 0 0;
+
+            @include v.breakpoint(large-screen) {
+                background-image: url("../images/image-product-desktop.jpg");
+                border-radius: 10px 0 0 10px;
+            }
+
+            .desktop-img {
+                display: none;
+
+                @include v.breakpoint(large-screen) {
+                    display: block;
+                    visibility: hidden;
+                }
+            }
+
+            .mobile-img {
+                visibility: hidden;
+                border-top-left-radius: 10px;
+
+                @include v.breakpoint(large-screen) {
+                    display: none;
+                }
+            }
+        }
+
+        .product-card__text {
+            margin: 1.5rem;
+
+            .text__product-type {
+
+                font: {
+                    family: v.$p-font;
+                    size: 0.75rem;
+                    weight: 500;
+                }
+
+                letter-spacing: 0.3rem;
+                color: v.$dark-grey;
+                line-height: 1.1rem;
+                text-transform: uppercase;
+                margin-bottom: 0.75rem;
+            }
+
+            .text__product-name {
+                text-transform: capitalize;
+                margin-bottom: 1rem;
+            }
+
+            .text__product-description {
+                font: {
+                    family: v.$p-font;
+                    size: v.$p-size;
+                    weight: 500;
+                }
+
+                line-height: 1.4rem;
+                color: v.$dark-grey;
+                margin-bottom: 1.5rem;
+
+                @include v.breakpoint(tablet) {
+                    max-width: 560px;
+                }
+            }
+
+            .price {
+                display: flex;
+                align-items: center;
+                margin-bottom: 1.25rem;
+
+                .discount-price {
+                    color: v.$dark-green;
+                    margin-right: 1.2rem;
+                }
+
+                .old-price {
+                    color: v.$dark-grey;
+                    font-size: 0.85rem;
+                    line-height: 1.4rem;
+                    font-weight: 500;
+                    font-family: v.$p-font;
+                }
+            }
+
+            a {
+                i {
+                    margin-right: 0.7rem;
+                }
+            }
+
+            @include v.breakpoint(large-screen) {
+                display: flex;
+                flex-direction: column;
+                text-align: left;
+                align-items: stretch;
+                justify-content: center;
+                margin: 2rem;
+            }
+        }
+
+        @include v.breakpoint(tablet) {
+            margin: 3rem 2.5rem;
+        }
+
+        @include v.breakpoint(large-screen) {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            margin: 11rem 26rem;
+            max-width: 700px;
+        }
+    }
+}

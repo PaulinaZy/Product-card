@@ -1,0 +1,32 @@
+//===FONTS====== 
+
+$h2-font: 'Fraunces',
+serif;
+$p-font: 'Montserrat',
+sans-serif;
+
+//====COLROS==== 
+
+$bg-color: #F2EAE2;
+$white: #fff;
+$dark-green: #3D8168;
+$dark-grey: #6C7289;
+$hover: #1A4032;
+$blackish: #1C232B;
+
+//====FONT SIZES==== 
+
+$h2-size: 2rem;
+$p-size: 0.85rem;
+
+//====BREAKPOINTS==== 
+
+$breakpoints: ('tablet': 576px,
+    'large-screen': 1440px);
+
+@mixin breakpoint ($size) {
+
+    @media (min-width: map-get($breakpoints, $size)) {
+        @content;
+    }
+}
