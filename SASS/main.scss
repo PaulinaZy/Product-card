@@ -55,17 +55,16 @@ h2 {
         margin: 1.75rem 1rem;
         background-color: v.$white;
         border-radius: 10px;
+        overflow: hidden;
 
         .img-container {
             background-image: url("../images/image-product-mobile.jpg");
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center;
-            border-radius: 10px 10px 0 0;
 
             @include v.breakpoint(large-screen) {
                 background-image: url("../images/image-product-desktop.jpg");
-                border-radius: 10px 0 0 10px;
             }
 
             .desktop-img {
@@ -79,7 +78,6 @@ h2 {
 
             .mobile-img {
                 visibility: hidden;
-                border-top-left-radius: 10px;
 
                 @include v.breakpoint(large-screen) {
                     display: none;
