@@ -1,5 +1,6 @@
 @use "variables"as v;
 
+// ===RESETS=== 
 *,
 *::before,
 *::after {
@@ -13,6 +14,7 @@ img {
     display: block;
 }
 
+//===BUTTON===
 .btn {
     display: block;
     background-color: v.$dark-green;
@@ -33,139 +35,130 @@ img {
     }
 }
 
-h2 {
 
-    font: {
-        size: v.$h2-size;
-        family: v.$h2-font;
-        weight: 700;
-    }
+//===MAIN SCSS===
 
-    line-height: 2rem;
-}
-
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
+body {
     background-color: v.$bg-color;
 
-    .product-card {
-        margin: 1.75rem 1rem;
-        background-color: v.$white;
-        border-radius: 10px;
-        overflow: hidden;
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        min-height: 100vh;
 
-        .img-container {
-            background-image: url("../images/image-product-mobile.jpg");
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
-
-            @include v.breakpoint(large-screen) {
-                background-image: url("../images/image-product-desktop.jpg");
-            }
-
-            .desktop-img {
-                display: none;
-
-                @include v.breakpoint(large-screen) {
-                    display: block;
-                    visibility: hidden;
-                }
-            }
-
-            .mobile-img {
-                visibility: hidden;
-
-                @include v.breakpoint(large-screen) {
-                    display: none;
-                }
-            }
-        }
-
-        .product-card__text {
-            margin: 1.5rem;
-
-            .text__product-type {
-
-                font: {
-                    family: v.$p-font;
-                    size: 0.75rem;
-                    weight: 500;
-                }
-
-                letter-spacing: 0.3rem;
-                color: v.$dark-grey;
-                line-height: 1.1rem;
-                text-transform: uppercase;
-                margin-bottom: 0.75rem;
-            }
-
-            .text__product-name {
-                text-transform: capitalize;
-                margin-bottom: 1rem;
-            }
-
-            .text__product-description {
-                font: {
-                    family: v.$p-font;
-                    size: v.$p-size;
-                    weight: 500;
-                }
-
-                line-height: 1.4rem;
-                color: v.$dark-grey;
-                margin-bottom: 1.5rem;
-
-                @include v.breakpoint(tablet) {
-                    max-width: 560px;
-                }
-            }
-
-            .price {
-                display: flex;
-                align-items: center;
-                margin-bottom: 1.25rem;
-
-                .discount-price {
-                    color: v.$dark-green;
-                    margin-right: 1.2rem;
-                }
-
-                .old-price {
-                    color: v.$dark-grey;
-                    font-size: 0.85rem;
-                    line-height: 1.4rem;
-                    font-weight: 500;
-                    font-family: v.$p-font;
-                }
-            }
-
-            a {
-                i {
-                    margin-right: 0.7rem;
-                }
-            }
-
-            @include v.breakpoint(large-screen) {
-                display: flex;
-                flex-direction: column;
-                justify-content: space-around;
-                margin: 2rem;
-            }
-        }
-
-        @include v.breakpoint(tablet) {
-            margin: 3rem 2.5rem;
-        }
-
-        @include v.breakpoint(large-screen) {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            margin: 11rem 26rem;
+        //===CARD WINDOW===
+        .product-card {
+            margin: 1.75rem 1rem;
+            background-color: v.$white;
+            border-radius: 10px;
+            overflow: hidden;
             max-width: 608px;
+            min-width: 250px;
+            transition: 0.7s ease;
+
+            //===TEXT BOX===
+            .product-card__text {
+                margin: 1.5rem;
+                transition: 0.7s ease;
+
+                .text__product-type {
+
+                    font: {
+                        family: v.$p-font;
+                        size: 0.75rem;
+                        weight: 500;
+                    }
+
+                    letter-spacing: 0.3rem;
+                    color: v.$dark-grey;
+                    line-height: 1.1rem;
+                    text-transform: uppercase;
+                    margin-bottom: 0.75rem;
+                }
+
+                .text__product-name {
+                    font: {
+                        size: v.$h1-size;
+                        family: v.$h1-font;
+                        weight: 700;
+                    }
+
+                    line-height: 2rem;
+                    text-transform: capitalize;
+                    margin-bottom: 1rem;
+                }
+
+                .text__product-description {
+                    font: {
+                        family: v.$p-font;
+                        size: v.$p-size;
+                        weight: 500;
+                    }
+
+                    line-height: 1.4rem;
+                    color: v.$dark-grey;
+                    margin-bottom: 1.5rem;
+
+                    @include v.breakpoint(tablet) {
+                        max-width: 560px;
+                    }
+                }
+
+                //===PRICE===
+                .price {
+                    @extend h1;
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 1.25rem;
+
+                    .discount-price {
+                        color: v.$dark-green;
+                        margin-right: 1.2rem;
+                    }
+
+                    .old-price {
+                        color: v.$dark-grey;
+                        font-size: 0.85rem;
+                        line-height: 1.4rem;
+                        font-weight: 500;
+                        font-family: v.$p-font;
+
+                        .sr-only {
+                            position: absolute;
+                            left: -10000px;
+                            top: auto;
+                            width: 1px;
+                            height: 1px;
+                            overflow: hidden;
+                        }
+                    }
+                }
+
+                a {
+                    i {
+                        margin-right: 0.7rem;
+                    }
+                }
+
+                @include v.breakpoint(large-screen) {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-around;
+                    margin: 2rem;
+                }
+            }
+
+            @include v.breakpoint(tablet) {
+                margin: 3rem 2.5rem;
+            }
+
+            @include v.breakpoint(large-screen) {
+                display: flex;
+                transition: 0.7s ease;
+
+            }
         }
     }
 }
